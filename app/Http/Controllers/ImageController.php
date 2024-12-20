@@ -39,5 +39,13 @@ class ImageController extends Controller
         return view('image.show', compact('images'));
 
     }
+    public function userArtworks()
+    {
+        // Fetch images uploaded by the current user
+        $images = Image::where('user_id', Auth::id())->get();
+
+        // Return the correct view
+         return view('image.currentuser', compact('images'));
+    }
 
 }
