@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -47,5 +48,24 @@ class ImageController extends Controller
         // Return the correct view
          return view('image.currentuser', compact('images'));
     }
+
+
+    public function destroy($id)
+{
+    $image = Image::findOrFail($id);
+
+    // Check if the authenticated user is the owner
+    if ($image->user_id !== Auth::id()) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    // Delete the image file from storage
+    Storage::delete($image->image_path);
+
+    // Delete the database record
+    $image->delete();
+
+    return redirect()->back()->with('success', 'Artwork deleted successfully.');
+}
 
 }

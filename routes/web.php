@@ -23,8 +23,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/image/upload', [ImageController::class, 'create'])->name('image.upload');
     Route::post('/image/upload', [ImageController::class, 'store'])->name('image.store');
+    Route::get('/profile/artworks', [ImageController::class, 'userArtworks'])->name('user.artworks');
+    Route::delete('/artworks/{id}', [ImageController::class, 'destroy'])->name('artworks.destroy');
+
 });
 
-Route::get('/profile/artworks', [ImageController::class, 'userArtworks'])->name('user.artworks');
+
 
 require __DIR__.'/auth.php';
