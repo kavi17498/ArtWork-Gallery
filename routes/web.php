@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,14 @@ Route::get('/',[ImageController::class,'showArtWorks'], function () {
 })->name('image.show');
 
 Route::get('/artworks',[ImageController::class,'showArtWorks'])->name('image.show');
+
+Route::get('/contactus', function () {
+    return view('layouts.contact');
+})->name('contactus');
+
+Route::get('/aboutus', function () {
+    return view('layouts.about');
+})->name('contactus');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/image/upload', [ImageController::class, 'store'])->name('image.store');
     Route::get('/profile/artworks', [ImageController::class, 'userArtworks'])->name('user.artworks');
     Route::delete('/artworks/{id}', [ImageController::class, 'destroy'])->name('artworks.destroy');
+    Route::get('/artworks/{id}/edit', [ImageController::class, 'edit'])->name('artworks.edit');
+    Route::put('/artworks/{id}', [ImageController::class, 'update'])->name('artworks.update');
 
 });
 

@@ -1,3 +1,115 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Container to center the form */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+}
+
+/* Form card with background and shadow */
+.form-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title style */
+.form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Form group container */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Label styling */
+.form-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+/* Input and textarea styling */
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9fafb;
+    margin-top: 0.25rem;
+}
+
+/* Focus styling for inputs */
+.form-input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+/* Submit button styling */
+.form-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.form-btn:hover {
+    background-color: #45a049;
+}
+
+/* Dark mode styles */
+body.dark .form-container {
+    background-color: #2d2d2d;
+}
+
+body.dark .form-card {
+    background-color: #3a3a3a;
+}
+
+body.dark .form-title {
+    color: #f9fafb;
+}
+
+body.dark .form-label {
+    color: #ccc;
+}
+
+body.dark .form-input {
+    background-color: #4a4a4a;
+    color: #f9fafb;
+    border-color: #555;
+}
+
+body.dark .form-btn {
+    background-color: #6200ea;
+}
+
+body.dark .form-btn:hover {
+    background-color: #3700b3;
+}

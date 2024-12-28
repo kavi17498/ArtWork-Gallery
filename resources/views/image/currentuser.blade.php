@@ -37,6 +37,17 @@
                                                 Delete
                                             </button>
                                         </form>
+
+                                        <!-- Update Button -->
+                                        <form action="{{ route('artworks.edit', $image->id) }}" method="POST" class="mt-2">
+                                            @csrf
+                                            @method('GET')
+                                            <button type="submit" 
+                                                class="px-4 py-2 bg-red-600 text-white text-sm rounded hover:bg-red-700"
+                                                onclick="return confirm('Are you sure you want to delete this artwork?');">
+                                                Update
+                                            </button>
+                                        </form>
                                     </td>
                                     <!-- Close the row after four columns -->
                                     @if(($index + 1) % 4 === 0 && !$loop->last)

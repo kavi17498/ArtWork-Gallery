@@ -16,7 +16,20 @@
                                              alt="Artwork" 
                                              class="w-[250px] h-[250px] object-cover">
                                         <div class="mt-2 text-sm text-gray-800 dark:text-gray-200">
+                                            
+                                            <h2 class="text-xl font-bold mb-2"><b> {{ $image->title }} </b> </h2>
+                                            <p class="text-gray-700">description : {{ $image->description }}</p>
                                             Uploaded by: {{ $image->user->name }}
+                                            
+                                            <!-- download Button -->
+                                            <div class="mt-4">
+                                            <a href="{{ asset('storage/' . $image->image_path) }}" 
+                                               download="{{ $image->title }}"
+                                               class="bg-blue-500 text-black px-4 py-2 rounded-lg hover:bg-blue-600">
+                                                Download
+                                            </a>
+                                        </div>
+
                                         </div>
                                     </div>
                                 </td>
