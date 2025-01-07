@@ -4,6 +4,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/',[ImageController::class,'showArtWorks'], function () {
     return view('welcome');
@@ -29,16 +31,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
     Route::get('/image/upload', [ImageController::class, 'create'])->name('image.upload');
     Route::post('/image/upload', [ImageController::class, 'store'])->name('image.store');
     Route::get('/profile/artworks', [ImageController::class, 'userArtworks'])->name('user.artworks');
     Route::delete('/artworks/{id}', [ImageController::class, 'destroy'])->name('artworks.destroy');
     Route::get('/artworks/{id}/edit', [ImageController::class, 'edit'])->name('artworks.edit');
     Route::put('/artworks/{id}', [ImageController::class, 'update'])->name('artworks.update');
+    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::delete('/admin/users/{id}', [AdminController::class, 'destroy'])->name('users.destroy');
 
 });
-
-
 
 require __DIR__.'/auth.php';

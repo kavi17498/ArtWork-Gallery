@@ -9,27 +9,26 @@
                     <table class="table-auto w-full text-center">
                         <tr>
                             @foreach($images as $index => $image)
-                                <td class="p-4">
+                                <td class="p-4 align-top ">
                                     <div class="rounded-lg overflow-hidden shadow-md">
-                                        <!-- Image with specified dimensions -->
+                                        <!-- Responsive Image -->
                                         <img src="{{ asset('storage/' . $image->image_path) }}" 
                                              alt="Artwork" 
-                                             class="w-[250px] h-[250px] object-cover">
+                                             class="max-w-full h-auto rounded-lg">
                                         <div class="mt-2 text-sm text-gray-800 dark:text-gray-200">
                                             
-                                            <h2 class="text-xl font-bold mb-2"><b> {{ $image->title }} </b> </h2>
-                                            <p class="text-gray-700">description : {{ $image->description }}</p>
+                                            <h2 class="text-xl font-bold mb-2"><b> {{ $image->title }} </b></h2>
+                                            <p class="text-gray-700">description: {{ $image->description }}</p>
                                             Uploaded by: {{ $image->user->name }}
                                             
-                                            <!-- download Button -->
-                                            <div class="mt-4">
-                                            <a href="{{ asset('storage/' . $image->image_path) }}" 
-                                               download="{{ $image->title }}"
-                                               class="bg-blue-500 text-black px-4 py-2 rounded-lg hover:bg-blue-600">
-                                                Download
-                                            </a>
-                                        </div>
-
+                                            <!-- Download Button -->
+                                            <div class="mt-4 mb-4">
+                                                <a href="{{ asset('storage/' . $image->image_path) }}" 
+                                                   download="{{ $image->title }}"
+                                                   class="bg-blue-500 text-black px-4 py-2 rounded-lg hover:bg-blue-600 pb-5">
+                                                    Download
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
